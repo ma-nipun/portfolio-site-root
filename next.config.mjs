@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({})
+
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -8,4 +13,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default withMDX(nextConfig)
