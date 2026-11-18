@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
 const posts = [
@@ -35,8 +36,8 @@ export default function BlogIndex() {
   return (
     <main>
       <nav className="nav shell">
-        <a className="brand" href="/"><span className="brand-mark">/</span> alex.builds</a>
-        <div className="nav-links open"><a href="/">Home</a><a href="/#about">About</a><a href="/#lab">Lab</a><a className="nav-button" href="/#contact">Let&apos;s talk <ArrowUpRight /></a></div>
+        <Link className="brand" href="/"><span className="brand-mark">/</span> alex.builds</Link>
+        <div className="nav-links open"><Link href="/">Home</Link><Link href="/#about">About</Link><Link href="/#lab">Lab</Link><Link className="nav-button" href="/#contact">Let&apos;s talk <ArrowUpRight /></Link></div>
       </nav>
       <section className="section shell blog-index">
         <p className="section-label">04 / BUILD LOG</p>
@@ -47,7 +48,7 @@ export default function BlogIndex() {
             <article className="log-entry" key={post.title}>
               <div className="log-date">{post.date}</div>
               <div className="log-main"><h2>{post.title}</h2><p>{post.summary}</p><div className="tag-row">{post.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></div>
-              <a className="log-arrow" href={post.slug === '#' ? '/#contact' : `/blog/${post.slug}`} aria-label={`Read ${post.title}`}><ArrowUpRight /></a>
+              <Link className="log-arrow" href={post.slug === '#' ? '/#contact' : `/blog/${post.slug}`} aria-label={`Read ${post.title}`}><ArrowUpRight /></Link>
             </article>
           ))}
         </div>

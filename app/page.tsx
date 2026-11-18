@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import {
   ArrowUpRight,
   Check,
@@ -36,7 +37,7 @@ export default function Home() {
         <button className="menu-toggle" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {['About', 'Lab', 'Experience'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>)}
-          <a href="/blog" onClick={() => setMenuOpen(false)}>Build log</a>
+          <Link href="/blog" onClick={() => setMenuOpen(false)}>Build log</Link>
           <a className="nav-button" href="#contact" onClick={() => setMenuOpen(false)}>Let&apos;s talk <ArrowUpRight /></a>
         </div>
       </nav>

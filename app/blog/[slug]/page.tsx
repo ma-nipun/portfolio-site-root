@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
 
@@ -26,11 +27,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <main>
-      <nav className="nav shell"><a className="brand" href="/"><span className="brand-mark">/</span> alex.builds</a><a className="text-link" href="/blog"><ArrowLeft /> Back to build log</a></nav>
+      <nav className="nav shell"><Link className="brand" href="/"><span className="brand-mark">/</span> alex.builds</Link><Link className="text-link" href="/blog"><ArrowLeft /> Back to build log</Link></nav>
       <article className="post shell">
         <div className="post-meta"><span>{metadata.date}</span><span className="muted">/</span><span>{metadata.tags.join(' / ')}</span></div>
         <Post />
-        <a className="button button-primary post-next" href="/">Back to home <ArrowUpRight /></a>
+        <Link className="button button-primary post-next" href="/">Back to home <ArrowUpRight /></Link>
       </article>
     </main>
   )
