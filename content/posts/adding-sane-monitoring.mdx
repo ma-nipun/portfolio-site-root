@@ -1,0 +1,26 @@
+export const metadata = {
+  title: 'Adding sane monitoring to the homelab',
+  date: 'FEB 18, 2025',
+  summary: 'A small stack for seeing what is healthy before something becomes a late-night mystery.',
+  tags: ['monitoring', 'homelab'],
+}
+
+# Adding sane monitoring to the homelab
+
+A small stack for seeing what is healthy before something becomes a late-night mystery.
+
+## The goal
+
+Monitoring should answer three questions quickly: **is it working, what changed, and what should I do next?** For a home lab, that means useful signals without building a second job to maintain the monitoring system.
+
+## The stack
+
+- **Uptime Kuma** for simple HTTP and TCP checks.
+- **Grafana** for the few charts that are actually useful.
+- **Node Exporter** for host-level CPU, memory, disk, and network metrics.
+
+The important part is not the tool list. It is keeping the dashboards small enough that I will actually look at them.
+
+## What I learned
+
+Start with failure detection, then add context. A green dashboard is not proof that the system is healthy, but a clear alert with a useful link is a great place to begin debugging.
