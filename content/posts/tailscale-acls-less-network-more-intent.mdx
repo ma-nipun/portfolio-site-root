@@ -1,0 +1,30 @@
+export const metadata = {
+  title: 'Tailscale ACLs: less network, more intent',
+  date: 'JAN 29, 2025',
+  summary: 'Reworking access rules so services are reachable by the right people, not just the right IPs.',
+  tags: ['security', 'networking'],
+}
+
+# Tailscale ACLs: less network, more intent
+
+Reworking access rules so services are reachable by the right people, not just the right IPs.
+
+## Context
+
+When setting up home servers and private node infrastructure, standard IP-based firewall rules quickly become brittle as new devices join the mesh.
+
+## The approach
+
+By leveraging Tailscale ACLs and tags, access control shifts from IP tracking to identity and tag-based rules.
+
+```json
+{
+  "acls": [
+    { "action": "accept", "src": ["group:admin"], "dst": ["tag:server:*"] }
+  ]
+}
+```
+
+## Key takeaway
+
+Defining network permissions by intent rather than IP addresses drastically reduces maintenance overhead as your node ecosystem grows.

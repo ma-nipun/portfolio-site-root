@@ -1,0 +1,20 @@
+export const metadata = {
+  title: 'Oracle Always Free: the useful bits',
+  date: 'DEC 12, 2024',
+  summary: 'Notes from putting a tiny VM to work without turning free cloud into production infrastructure.',
+  tags: ['learning', 'security'],
+}
+
+# Oracle Always Free: the useful bits
+
+Notes from putting a tiny VM to work without turning free cloud into production infrastructure.
+
+## Overview
+
+Free cloud tiers are great for small utility services, lightweight webhooks, or secondary DNS fallback servers.
+
+## Guidelines for stability
+
+- **Keep it stateless:** Don't rely on free cloud compute for unbacked primary databases.
+- **Automate setup:** Ensure scripts allow recreating the VM from scratch in minutes.
+- **Monitor health:** Simple Uptime Kuma checks keep you aware of unexpected reboots.

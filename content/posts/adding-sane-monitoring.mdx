@@ -1,25 +1,47 @@
 export const metadata = {
-  title: 'Adding sane monitoring to the homelab',
+  title: 'Adding monitoring to the homelab that later got useful',
   date: 'FEB 18, 2025',
-  summary: 'A small stack for seeing what is healthy before something becomes a late-night mystery.',
-  tags: ['monitoring', 'homelab'],
+  summary: 'A small stack for seeing what is healthy that paid off in a different way',
+  tags: ['monitoring', 'homelab', 'grafana'],
 }
 
-# Adding sane monitoring to the homelab
+# Adding monitoring to the homelab that later got useful
 
-A small stack for seeing what is healthy before something becomes a late-night mystery.
+Started as me wanting to see what's happening on homelab without having to dig through the logs (which os due a new overhaul in the future). But recently i was asked to trim down the time IT takes for our team monitor couple of printers, some hosts and UPS's we have running.
 
 ## The goal
 
-Monitoring should answer three questions quickly: **is it working, what changed, and what should I do next?** For a home lab, that means useful signals without building a second job to maintain the monitoring system.
+Monitoring should answer three questions quickly: **is it working, what changed, and what should I do next?** For a home lab or in this my case, that means useful signals without building a second job to maintain the monitoring system.
+
+So essntially we need the follwoing device in a neat monitoring set up so I dont run into problem that would've been avoided if someone checked the device before. Here's our device list.
+
+* Few network hosts/uplinks
+* Mutiple Network Printers (Which all supports SNMP)
+* NTI ENVIROMUX
+* UPS
+    * With onboard SNMP card
+    * without SNMP Card but USB conncet host runs PowerChute
 
 ## The stack
 
 - **Uptime Kuma** for simple HTTP and TCP checks.
 - **Grafana** for the few charts that are actually useful.
-- **Node Exporter** for host-level CPU, memory, disk, and network metrics.
+- **SNMP Exporter** for host-level CPU, memory, disk, and network metrics.
 
 The important part is not the tool list. It is keeping the dashboards small enough that I will actually look at them.
+
+## The Process
+  ### Few network hosts/uplinks
+  As for now I've dived them upto 2 sections
+  * Network hosts/uplinks -  simple ping check to see if they are up. and wait for 2 minutes mark them as down.
+  * Hosted services - Ping Check + certificate check (you'd be surprise how easy it is to setup and how many times it helped me)
+
+  ### The Rest (Printers/UPS/NTI)
+  All are being collected by snmp exporter to promethues then grafana talk to promethus to generate the Dashbaords itself
+
+## Some Previews
+
+
 
 ## What I learned
 
